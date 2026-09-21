@@ -1,0 +1,60 @@
+{
+  "name": "discord2",
+  "version": "1.0.0",
+  "description": "Discord 2 - Voice, video and screen share app",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "tsx watch server/index.ts",
+    "dev:client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "tsx server/index.ts",
+    "postinstall": "cd client && npm install",
+    "electron:dev": "concurrently \"npm run dev:server\" \"wait-on http://localhost:3001 && electron .\"",
+    "electron:build": "npm run build && electron-builder --win",
+    "electron:build:dir": "npm run build && electron-builder --dir"
+  },
+  "build": {
+    "appId": "com.moraisbarber.discord2",
+    "productName": "Discord 2",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**/*",
+      "server/**/*",
+      "client/dist/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "client/public/favicon.svg"
+    },
+    "portable": {
+      "artifactName": "Discord2-Portable.exe"
+    }
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "electron-log": "^5.4.4",
+    "electron-updater": "^6.8.9",
+    "express": "^4.18.2",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "@types/ws": "^8.5.10",
+    "concurrently": "^8.2.2",
+    "electron": "^44.4.3",
+    "electron-builder": "^26.15.3",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "wait-on": "^7.2.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

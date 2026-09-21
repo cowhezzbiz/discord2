@@ -1,0 +1,11 @@
+[phases.setup]
+nixpkgs = ["...", "nodejs-18_x"]
+
+[phases.install]
+cmds = ["npm install && npm run postinstall"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "npm start"

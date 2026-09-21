@@ -1,0 +1,21 @@
+{
+  "appId": "com.moraisbarber.discord2",
+  "productName": "Discord 2",
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "electron/**/*",
+    "server/**/*",
+    "client/dist/**/*",
+    "node_modules/**/*",
+    "package.json"
+  ],
+  "win": {
+    "target": "portable",
+    "icon": "client/public/favicon.svg"
+  },
+  "portable": {
+    "artifactName": "Discord2-Portable.exe"
+  }
+}
